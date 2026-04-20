@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import logo from '../assets/img/nubdexchange_logo.png';
+import Button from './Button';
 
 const links = [
   { label: 'Home', to: '/' },
@@ -20,7 +21,7 @@ const NavBar = () => {
     <header className="fixed inset-x-0 top-0 z-50 border-b-2 border-zinc-900 bg-zinc-100/95 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
         <NavLink to="/" className="flex items-center gap-3">
-          <img src={logo} alt="BulldogEx" className="h-9 w-9 rounded-full border-2 border-zinc-900 bg-zinc-50 object-contain" />
+          <img src={logo} alt="BulldogEx" className="h-9 w-9 rounded-full bg-zinc-50 object-contain" />
           <div className="space-y-0.5">
             <p className="text-xl font-bold text-zinc-900">BulldogEx Shop</p>
           </div>
@@ -32,6 +33,9 @@ const NavBar = () => {
               {link.label}
             </NavLink>
           ))}
+          <Button to="/auth/signin" variant="primary">
+            Sign In
+          </Button>
         </nav>  
       </div>
     </header>

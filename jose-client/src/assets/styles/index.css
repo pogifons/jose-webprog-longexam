@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial,
+      "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+    @apply bg-zinc-100 text-zinc-900 antialiased;
+  }
+
+  #root {
+    @apply min-h-screen;
+  }
+}

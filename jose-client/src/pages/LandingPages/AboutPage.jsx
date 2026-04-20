@@ -1,5 +1,7 @@
 import Button from '../../components/Button';
 import logo from '../../assets/img/nubdexchange_logo.png';
+import products from '../../assets/product-content.js';
+import bulldoggie from '../../assets/img/bulldoggie.jpg';
 
 const AboutPage = () => {
   return (
@@ -7,8 +9,22 @@ const AboutPage = () => {
       <section className="border-y-2 border-zinc-900 bg-zinc-50 px-4 py-6 sm:px-6 sm:py-8 lg:px-8">
         <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
           <div className="rounded-3xl border-2 border-dashed border-zinc-300 bg-zinc-100 p-6">
-            <div className="flex min-h-72 items-center justify-center rounded-[1.25rem] bg-zinc-200">
-              <img src={logo} alt="BulldogEx" className="h-32 w-32 rounded-full border-2 border-zinc-900 bg-zinc-50 object-contain" />
+            <div className="relative min-h-72 overflow-hidden rounded-[1.25rem] bg-zinc-200">
+              <img
+                src={bulldoggie}
+                alt="Bulldogs Exchange at National University"
+                className="absolute inset-0 h-full w-full object-cover"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-zinc-900/10" />
+              <div className="absolute left-5 top-5">
+                <img
+                  src={logo}
+                  alt="BulldogEx"
+                  className="h-12 w-12 rounded-full bg-white/90 object-contain"
+                  loading="lazy"
+                />
+              </div>
             </div>
           </div>
 
@@ -106,18 +122,25 @@ const AboutPage = () => {
               Category Grid
             </p>
             <div className="mt-5 grid gap-4 sm:grid-cols-2">
-              <div className="flex aspect-square items-center justify-center rounded-[1.25rem] bg-zinc-200">
-                <div className="h-12 w-12 border-2 border-zinc-300 bg-zinc-100" />
-              </div>
-              <div className="flex aspect-square items-center justify-center rounded-[1.25rem] bg-zinc-200">
-                <div className="h-12 w-12 border-2 border-zinc-300 bg-zinc-100" />
-              </div>
-              <div className="flex aspect-square items-center justify-center rounded-[1.25rem] bg-zinc-200">
-                <div className="h-12 w-12 border-2 border-zinc-300 bg-zinc-100" />
-              </div>
-              <div className="flex aspect-square items-center justify-center rounded-[1.25rem] bg-zinc-200">
-                <div className="h-12 w-12 border-2 border-zinc-300 bg-zinc-100" />
-              </div>
+              {products.slice(0, 4).map((product) => (
+                <div
+                  key={product.name}
+                  className="relative aspect-square overflow-hidden rounded-[1.25rem] bg-zinc-200"
+                >
+                  {product.imageSrc ? (
+                    <img
+                      src={product.imageSrc}
+                      alt={product.imageAlt ?? product.title}
+                      className="h-full w-full object-cover"
+                      loading="lazy"
+                    />
+                  ) : (
+                    <div className="flex h-full w-full items-center justify-center">
+                      <div className="h-12 w-12 border-2 border-zinc-300 bg-zinc-100" />
+                    </div>
+                  )}
+                </div>
+              ))}
             </div>
             <Button to="/products" className="mt-5">View Products</Button>
           </div>
